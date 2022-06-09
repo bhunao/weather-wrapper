@@ -15,7 +15,7 @@ templates = Jinja2Templates(directory="static")
 @app.get("/", response_class=HTMLResponse)
 async def weather(request: Request, location: None | str="são paulo"):
     return templates.TemplateResponse(
-        "weather.html", {
+        "index.html", {
             "request": request,
             "forecast": await get_weather(location)
         }
