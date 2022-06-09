@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='static/style.css') }}">
+</head>
+<style>
+  .weather {
+    text-align: center;
+    font-size: xx-large;
+    position: absolute;
+    color: red;
+  }
+
+  .center {
+    font-size: xx-large;
+    color: red;
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
+</style>
+
+<body>
+  <div class="center">
+    {{ forecast.location }}
+    <br>
+    {{ forecast.date }}
+    <br>
+    {{ forecast.sky_text }}
+    <br>
+    {{ forecast.temperature }}
+  </div>
+
+</body>
+
+</html>

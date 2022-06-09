@@ -1,0 +1,5 @@
+/* url_for not function properly on github codespaces, so no style.css */
+.weather {
+    color: red;
+    text-align: center;
+}
