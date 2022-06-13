@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 2rem 4rem;
+}
+
+
+.gradient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(45deg, #F6E4C5, #A0D995, #6CC4A1, #4CACBC);
+  background-size: 300% 300%;
+  animation: colors 15s ease infinite;
+}
+
+@keyframes colors {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 50% 100%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

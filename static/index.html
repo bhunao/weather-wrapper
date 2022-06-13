@@ -20,16 +20,16 @@
     font-size: xx-large;
     color: red;
     margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 </style>
 
 <body>
-  <div class="center">
+    <div class="center">
     {{ forecast.location }}
     <br>
     {{ forecast.date }}
@@ -38,7 +38,36 @@
     <br>
     {{ forecast.temperature }}
   </div>
+  <canvas id="screen"></canvas>
+  <script>
+    const canvas = document.getElementById("screen");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
+    const ctx = canvas.getContext("2d");
+
+    function Circle (x, y, r, c){
+      this.x = x
+      this.y = y
+      this.r = r
+      this.c = c
+
+      this.dx;
+      this.dy;
+
+      this.draw = function () {
+        console.log(window.innerHeight);
+        ctx.beginPath();
+        ctx.fillStyle = this.c;
+        ctx. arc(this.x, this.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    let midX = window.innerWidth/2
+    let ball = new Circle(midX, 200, 40, "red")
+    ball.draw()
+  </script>
 </body>
 
 </html>
