@@ -14,6 +14,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
+    "http://localhost:3001",
 ]
 
 app.add_middleware(
@@ -42,6 +43,11 @@ async def location(loc: str):
     result = await get_weather(loc)
     print(result)
     return result
+
+@app.get("/test/")
+async def test(tst: str):
+    print(tst)
+    return tst
 
 if __name__ == "__main__":
     uvicorn.run(
