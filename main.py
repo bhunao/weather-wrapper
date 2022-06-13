@@ -1,6 +1,7 @@
 import uvicorn
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -10,6 +11,19 @@ from weather.forecast import get_weather
 
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="static")
 
@@ -22,14 +36,10 @@ async def weather(request: Request, loc: None | str="são paulo"):
         }
     )
 
-class Weather(BaseModel):
-    location: str
-
-
 @app.get("/location/")
-async def location(loc: Weather):
+async def location(loc: str):
     print(loc)
-    result = await get_weather(loc.location)
+    result = await get_weather(loc)
     print(result)
     return result
 
